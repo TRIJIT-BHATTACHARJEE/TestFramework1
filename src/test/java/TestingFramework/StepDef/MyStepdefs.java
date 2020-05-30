@@ -30,7 +30,7 @@ public class MyStepdefs {
     @Before
     public void init(Scenario scenario){
         webDriver = new ChromeDriver();
-        report = new ExtentReports(System.getProperty("user.dir")+"\\ExtentReportResults.html");
+        report = new ExtentReports(System.getProperty("user.dir")+"\\Execution_Reports\\ExtentReportResults.html");
         test = report.startTest("Scenario Name : "+scenario.getName());
 
 
@@ -42,16 +42,6 @@ public class MyStepdefs {
         report.endTest(test);
         report.flush();
     }
-
-    public static String capture(WebDriver driver) throws IOException {
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File Dest = new File("src/../BStackImages/" + System.currentTimeMillis()
-                + ".png");
-        String errflpath = Dest.getAbsolutePath();
-        FileUtils.copyFile(scrFile, Dest);
-        return errflpath;
-    }
-
 
 
     @When("i launch google website")

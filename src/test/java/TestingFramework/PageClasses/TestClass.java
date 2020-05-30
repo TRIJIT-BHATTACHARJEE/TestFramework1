@@ -1,6 +1,7 @@
 package TestingFramework.PageClasses;
 
 import TestingFramework.StepDef.MyStepdefs;
+import TestingFramework.Utility.ScreenshotHelper;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
@@ -22,7 +23,7 @@ public class TestClass {
             webDriver.findElement(By.name("q")).sendKeys("cheese" + Keys.ENTER);
             WebElement firstResult = wait.until(presenceOfElementLocated(By.cssSelector("h3>div")));
             System.out.println(firstResult.getAttribute("textContent"));
-            test.log(LogStatus.PASS, "Navigated to the specified URL" , test.addScreenCapture(MyStepdefs.capture(webDriver)));
+            test.log(LogStatus.PASS, "Navigated to the specified URL" , test.addScreenCapture(ScreenshotHelper.capture(webDriver)));
         } catch(Exception e){
             test.log(LogStatus.FAIL, "Test Failed");
             e.printStackTrace();
