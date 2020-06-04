@@ -1,11 +1,11 @@
 $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/FeatureFiles/StoryFile.feature");
 formatter.feature({
-  "name": "Guess the word",
+  "name": "sample feature",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Maker starts a game",
+  "name": "Sample scenario",
   "description": "",
   "keyword": "Scenario"
 });
@@ -18,6 +18,16 @@ formatter.step({
 });
 formatter.match({
   "location": "TestingFramework.StepDef.MyStepdefs.launchGoogle()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "i read values from config properties file",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "TestingFramework.StepDef.MyStepdefs.iReadValuesFromConfigPropertiesFile()"
 });
 formatter.result({
   "status": "passed"

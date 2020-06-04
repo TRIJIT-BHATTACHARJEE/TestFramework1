@@ -1,6 +1,10 @@
-Feature: Guess the word
+Feature: sample feature
 
-  # The first example has two steps
-  Scenario: Maker starts a game
+
+  Scenario: Sample scenario
     When i launch google website
+    Then i read values from config properties file
+
+#    Scenario: Sample Rest Assured test
+#      When i try a rest api automation
 

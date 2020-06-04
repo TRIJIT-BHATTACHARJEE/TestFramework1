@@ -1,6 +1,7 @@
 package TestingFramework.PageClasses;
 
 import TestingFramework.StepDef.MyStepdefs;
+import TestingFramework.Utility.ConfigPropertiesHelper;
 import TestingFramework.Utility.ScreenshotHelper;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -20,12 +21,24 @@ public class TestClass {
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         try {
             webDriver.get("https://google.com");
-            webDriver.findElement(By.name("q")).sendKeys("cheese" + Keys.ENTER);
-            WebElement firstResult = wait.until(presenceOfElementLocated(By.cssSelector("h3>div")));
-            System.out.println(firstResult.getAttribute("textContent"));
+            webDriver.findElement(By.name("q")).sendKeys("Trijit Bhattacharjee" + Keys.ENTER);
             test.log(LogStatus.PASS, "Navigated to the specified URL" , test.addScreenCapture(ScreenshotHelper.capture(webDriver)));
         } catch(Exception e){
             test.log(LogStatus.FAIL, "Test Failed");
+            e.printStackTrace();
+        }
+    }
+
+    public static void readValueFromConfigFile(WebDriver webDriver, ExtentTest testreport) {
+        try{
+            String value1=ConfigPropertiesHelper.getValueFromConfig("Key1");
+            if(value1.length()!=0) {
+                testreport.log(LogStatus.PASS, "Value of Key is "+value1, testreport.addScreenCapture(ScreenshotHelper.capture(webDriver)));
+            }else{
+                testreport.log(LogStatus.FAIL, "Value of Key is "+value1, testreport.addScreenCapture(ScreenshotHelper.capture(webDriver)));
+
+            }
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
